@@ -1,11 +1,11 @@
 
 
-<button {{action addSlide}}>add slide</button>
+<button {{action addSlideAction}}>add slide</button>
 <button>remove slide</button>
 
 <ul>
 {{#each item in model}}
-    <li>{{item.name}}</li>
+    <li><a {{action selectSlideAction item}}>{{item.name}}</a> <a {{action deleteSlideAction item}}>X</a> </li>
 {{/each}}
 </ul>
 
