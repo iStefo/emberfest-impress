@@ -1,10 +1,12 @@
 Slide "{{name}}"
 
 {{! handlers }}
-<div class="line">
+{{#if isSelected}}
+  <div class="line">
+    <div class="handler top left"></div>
+  </div>
   <div class="handler top left"></div>
-</div>
-<div class="handler top left"></div>
-<div class="handler top right"></div>
-<div class="handler bottom left"></div>
-<div class="handler bottom right"></div>
+  <div class="handler top right"></div>
+  <div class="handler bottom left"></div>
+  <div class="handler bottom right"></div>
+{{/if}}
