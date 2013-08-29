@@ -1,4 +1,4 @@
-var SlideController = Ember.Controller.extend();
+var SlideController = Ember.ObjectController.extend();
 
 
 export default SlideController;
