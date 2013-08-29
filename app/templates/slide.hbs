@@ -3,10 +3,10 @@ Slide "{{name}}"
 {{! handlers }}
 {{#if isSelected}}
   <div class="line">
-    <div class="handler top left"></div>
+    {{pin-pin class="top left"}}
   </div>
-  <div class="handler top left"></div>
-  <div class="handler top right"></div>
-  <div class="handler bottom left"></div>
-  <div class="handler bottom right"></div>
+  {{pin-pin class="top left"}}
+  {{pin-pin class="top right"}}
+  {{pin-pin class="bottom left"}}
+  {{pin-pin class="bottom right"}}
 {{/if}}
