@@ -8,12 +8,14 @@ var EditorController = Ember.ArrayController.extend({
     this.pushObject(Slide.create());
   },
   //action to select the slide
-  selectSlideAction:function(event){
-    console.log(event);
+  selectSlideAction:function(slide){
+    this.get('content').setEach('isSelected',false);
+    slide.set('isSelected',true);
   },
   //action to handle the deletion event
-  deleteSlideAction : function(event){
-    this.removeObject(event);
+  deleteSlideAction : function(slide){
+    this.removeObject(slide);
+    slide.destroy();
   }
 });
 

@@ -5,7 +5,7 @@
   <h3>Control Panel</h3>
   <ul>
     {{#each item in model}}
-      <li><a {{action selectSlideAction item}}>{{item.name}}</a> <a {{action deleteSlideAction item}}>X</a> </li>
+      <li {{bindAttr class="item.isSelected:selected"}}><a {{action selectSlideAction item}}>{{item.name}}</a> <a {{action deleteSlideAction item}}>X</a> </li>
     {{/each}}
   </ul>
 </div>

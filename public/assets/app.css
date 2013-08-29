@@ -45,3 +45,7 @@ body {
 .editor-slide .handler.bottom {
   bottom: -6px;
 }
+
+.selected{
+    background:blue;
+}
