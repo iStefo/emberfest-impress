@@ -11,6 +11,10 @@ body {
   user-select: none;
 }
 
+/*#editor {
+  position: relative;
+}
+*/
 .editor-slide {
   position: relative;
   border: 1px solid navy;
@@ -55,6 +59,11 @@ body {
 }
 
 .selected{
-  background:cornflowerblue;
   border: 1px solid navy;
+}
+.menu-hover:hover{
+  background: #E6E6E6;
+}
+.editor-slide.active:hover{
+  cursor:move;
 }

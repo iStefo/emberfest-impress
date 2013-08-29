@@ -6,9 +6,9 @@ var EditorController = Ember.ArrayController.extend({
   //action to add a Slide
   addSlideAction : function(){
     this.pushObject(Slide.create());
-    Ember.run.next(this, function() {
+    /*Ember.run.schedule('afterRender', this, function() {
       this.playSlideshow();
-    });
+    });*/
   },
   //action to select the slide
   selectSlideAction:function(slide){
@@ -31,6 +31,7 @@ var EditorController = Ember.ArrayController.extend({
   },
 
   playSlideshow: function() {
+
     $('#impress').jmpress({
       mouse: { clickSelects: false }
     });

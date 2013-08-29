@@ -1,27 +1,48 @@
-<button {{action addSlideAction}}>add slide</button>
-<button {{action playSlideshow}}>Play!</button>
+<div id="control-panel" class="pure-u-1-3">
+	<div class="pure-menu pure-menu-open">
+    <h3 class="pure-menu-heading">Control Panel</h3>
 
-<div id="control-panel">
-  <h3>Control Panel</h3>
-  <ul>
-    {{#each item in model}}
-      <li {{bindAttr class="item.isSelected:selected"}}>
-      	<a {{action selectSlideAction item}}>{{item.name}}</a>
-      	{{#if item.isSelected}}
-      		{{#if item.isEditing}}
-      			<a {{action editSlideAction item}}>Save slide</a>
-      		{{else}}
-				<a {{action editSlideAction item}}>Edit</a>
-      		{{/if}}
-      		<a {{action deleteSlideAction item}}>X</a>
-      	{{/if}}
-      </li>
-    {{/each}}
-  </ul>
+    
+        <span class="icon-stack" {{action addSlideAction}}>
+          <i class="icon-circle icon-stack-base"></i>
+          <i class="icon-plus icon-light"></i>
+        </span>
+        <span class="icon-stack" {{action playSlideshow}}>
+          <i class="icon-circle icon-stack-base"></i>
+          <i class="icon-play icon-light"></i>
+        </span>
+    
+    <ul>
+      {{#each item in model}}
+        <li {{bindAttr class="item.isSelected:selected :menu-hover"}}>
+          <span>
+          	<span {{action selectSlideAction item}}>{{item.name}}</span>
+          	{{#if item.isSelected}}
+          		{{#if item.isEditing}}
+                <span class="icon-stack" {{action editSlideAction item}}>
+                  <i class="icon-circle icon-stack-base"></i>
+                  <i class="icon-save icon-light"></i>
+                </span>
+          		{{else}}
+                <span class="icon-stack" {{action editSlideAction item}}>
+                  <i class="icon-circle icon-stack-base"></i>
+                  <i class="icon-pencil icon-light"></i>
+                </span>
+          		{{/if}}
+                <span class="icon-stack" {{action deleteSlideAction item}}>
+                  <i class="icon-circle icon-stack-base"></i>
+                  <i class="icon-remove icon-light"></i>
+                </span>
+          	{{/if}}
+          </span>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
 </div>
 
 
-<div id="impress">
+<div id="impress" class="pure-u-1-3">
   {{#each item in model}}
     {{render slide item}} 
   {{/each}}

@@ -13,6 +13,11 @@ var SlideView = Ember.View.extend({
     }
   },
 
+  didInsertElement: function() {
+    //$('#impress').jmpress('canvas').append(this.$());
+    //$('#jmpress').jmpress('init', this.$());
+  },
+
   isDragging: false,
   dragOrigin: null,
 

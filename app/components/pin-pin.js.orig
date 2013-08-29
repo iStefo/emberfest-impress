@@ -9,11 +9,22 @@ var PinPinComponent = Ember.Component.extend({
       $('body').on('mousemove', this._mMH = $.proxy(this.mouseMoveHandler, this));
       $('body').on('mouseup', this._mUH = $.proxy(this.releaseMouse, this));
 
-var centerPoint = this._calculateParentCenter();
+<<<<<<< HEAD
+      var centerPoint = this._calculateParentCenter();
       var ownPoint = { x: ev.clientX, y: ev.clientY };
       var pointDistance = this._calculateDistance(centerPoint, ownPoint);
       console.log(pointDistance);
       this.set('initDist', pointDistance);
+    }
+  },
+
+  mouseMoveHandler: function (ev) {
+    var centerPoint = this._calculateParentCenter();
+    var ownPoint = { x: ev.clientX, y: ev.clientY };
+    var dist = this._calculateDistance(centerPoint, ownPoint);
+    var newScale = dist / this.get('initDist');
+=======
+      this.set('initDist', this._calculateDistance(ev));
     }else{
       this.set('parentView.isRotating',true);
       $('body').on('mousemove', this.mouseMoveRotationHandler.bind(this));
@@ -41,25 +52,33 @@ var centerPoint = this._calculateParentCenter();
     
   },
   mouseMoveHandler: function (ev) {
-    var centerPoint = this._calculateParentCenter();
-    var ownPoint = { x: ev.clientX, y: ev.clientY };
+    var newDist = this._calculateDistance(ev);
 
-    var dist = this._calculateDistance(centerPoint, ownPoint);
-    var newScale = dist / this.get('initDist');
+    //console.log((newDist / this.get('initDist')).toFixed(2));
+    this.set('scale', (newDist / this.get('initDist')).toFixed(2));
+    // console.log((newDist / this.get('initDist')).toFixed(2));
+    var newScale = parseFloat((newDist / this.get('initDist')).toFixed(2));
+>>>>>>> 04087d6b4f4f6aeb98fdd96772ca53668ddc90ec
     this.get('parentView.controller').set('scale', newScale);
 
   },
   releaseMouse: function () {
     console.log('release mouse now');
+<<<<<<< HEAD
     $('body').off('mousemove', this._mMH);
     $('body').off('mouseup',  this._mUH);
+=======
+    $('body').off('mousemove');
+    $('body').off('mouseup');
     if (!this.get('rotation'))  {
       this.set('parentView.isRotating',false);
     }
+>>>>>>> 04087d6b4f4f6aeb98fdd96772ca53668ddc90ec
   },
 
   _calculateParentCenter: function() {
     var parentView = this.get('parentView').$()[0],
+<<<<<<< HEAD
       parentScale = this.get('parentView.controller.scale'),
       centerX = (parentView.getBoundingClientRect().left + (parentView.offsetWidth / 2) * parentScale),
       centerY = (parentView.getBoundingClientRect().top + (parentView.offsetHeight / 2) * parentScale );
@@ -71,6 +90,25 @@ var centerPoint = this._calculateParentCenter();
 
   _calculateDistance: function (point1, point2) {
     return Math.sqrt(Math.pow(point1.x - point2.x, 2) + Math.pow(point1.y - point2.y, 2));
+=======
+      centerX = parentView.offsetLeft + (parentView.offsetWidth / 2),
+      centerY = parentView.offsetTop + (parentView.offsetHeight / 2),
+      initX = ev.clientX,
+      initY = ev.clientY,
+      dist = Math.sqrt(Math.pow(initX - centerX, 2) + Math.pow(initY - centerY, 2));
+    return dist;
+  },
+  _calculateDeltaPosition:function(ev){
+    var parentView = this.get('parentView').$()[0],
+      centerX = parentView.offsetLeft + (parentView.offsetWidth / 2),
+      centerY = parentView.offsetTop + (parentView.offsetHeight / 2),
+      initX = ev.clientX,
+      initY = ev.clientY,
+
+      dist = Math.sqrt(Math.pow(initX - centerX, 2) + Math.pow(initY - centerY, 2));
+
+    return dist;
+>>>>>>> 04087d6b4f4f6aeb98fdd96772ca53668ddc90ec
   }
 
 });
