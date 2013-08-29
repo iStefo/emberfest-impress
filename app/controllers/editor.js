@@ -28,7 +28,9 @@ var EditorController = Ember.ArrayController.extend({
   },
 
   playSlideshow: function() {
-    $('#impress').jmpress();
+    $('#impress').jmpress({
+      mouse: { clickSelects: false }
+    });
   }
 });
 
