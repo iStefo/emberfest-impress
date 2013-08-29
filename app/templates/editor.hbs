@@ -5,7 +5,7 @@ Editor template.
 
 <div>Slide list
 <ul>
-    {{#each item in model}}
-    <li>{{item}}</li>
-    {{/each}}
+  {{#each item in model}}
+    {{render slide item}} 
+  {{/each}}
 </ul>

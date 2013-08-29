@@ -1,5 +1,5 @@
 var Slide = Ember.Object.extend({
-    name: 'new slide'
+  name: 'new slide'
 });
 
 export default Slide;
