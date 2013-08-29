@@ -13,6 +13,43 @@ var SlideView = Ember.View.extend({
     }
   },
 
+  isDragging: false,
+  dragOrigin: null,
+
+  mouseDown: function(e) {
+    console.log(e);
+    // enter dragging only if we are selected
+    if (this.get('controller.isSelected')) {
+      console.log('enter dragging');
+      this.set('isDragging', true);
+      this.set('dragOrigin', {
+        x: e.offsetX,
+        y: e.offsetY
+      });
+      return false;
+    }
+    
+  },
+
+  mouseMove: function(e)  {
+    if (this.get('isDragging')) {
+      var dX =  e.offsetX - this.get('dragOrigin.x');
+      var dY = e.offsetY - this.get('dragOrigin.y');
+      this.get('controller').incrementProperty('x', dX);
+      this.get('controller').incrementProperty('y', dY);
+    }
+
+  },
+
+  mouseUp: function(e) {
+    if (this.get('isDragging')) {
+
+    }
+    this.set('isDragging', false);
+    return false;
+  },
+
+
   xObserver: function() {
     this.$().data('stepData').x = this.get('dataX');
     this.reapply();
@@ -35,7 +72,10 @@ var SlideView = Ember.View.extend({
 
   reapply: function() {
     $('#impress').jmpress('reapply', this.$());
-    $('#impress').jmpress('reselect');
+    if (!this.get('isDragging')) {
+      //$('#impress').jmpress('reselect');
+    }
+    
   },
 
   selectedObserver: function() {
