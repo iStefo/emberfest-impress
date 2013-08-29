@@ -1,7 +1,14 @@
-Editor template.
+
 
 <button {{action addSlide}}>add slide</button>
 <button>remove slide</button>
+
+<ul>
+{{#each item in model}}
+    <li>{{item.name}}</li>
+{{/each}}
+</ul>
+
 
 <div>Slide list
 <ul>
@@ -9,3 +16,4 @@ Editor template.
     {{render slide item}} 
   {{/each}}
 </ul>
+</div>
