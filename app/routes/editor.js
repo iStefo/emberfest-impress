@@ -1,7 +1,9 @@
+import Slide from '../models/slide';
+
 var EditorRoute = Ember.Route.extend({
   model: function() {
-    console.log('editor route is showing');
-    return Ember.A();
+    
+    return [Slide.create(),Slide.create()];
   }
 });
 

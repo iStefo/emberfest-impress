@@ -1,5 +1,6 @@
 Slide "{{name}}"
 
+
 {{! handlers }}
 {{#if isSelected}}
   <div class="line">
@@ -9,4 +10,15 @@ Slide "{{name}}"
   {{pin-pin class="top right"}}
   {{pin-pin class="bottom left"}}
   {{pin-pin class="bottom right"}}
+
+  {{#if isEditing}}
+	{{textarea value=value}}
+  {{else}}
+    {{value}}
+  {{/if}}
+
+ {{else}}
+ 	
+		{{value}}
+ 	
 {{/if}}
