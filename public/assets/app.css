@@ -52,3 +52,6 @@ body {
 .menu-hover:hover{
   background: #E6E6E6;
 }
+.editor-slide.active:hover{
+  cursor:move;
+}
