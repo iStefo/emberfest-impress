@@ -21,6 +21,15 @@ body {
   background: cornflowerblue;
 }
 
+.editor-slide .line {
+  width: 1px;
+  height: 20px;
+  background-color: navy;
+  position: absolute;
+  left: 50%;
+  top: -20px;
+}
+
 .editor-slide .handler.left {
   left: -6px;
 }

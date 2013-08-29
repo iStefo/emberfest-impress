@@ -1,19 +1,18 @@
-
-
 <button {{action addSlideAction}}>add slide</button>
 <button>remove slide</button>
 
-<ul>
-{{#each item in model}}
-    <li><a {{action selectSlideAction item}}>{{item.name}}</a> <a {{action deleteSlideAction item}}>X</a> </li>
-{{/each}}
-</ul>
+<div id="control-panel">
+  <h3>Control Panel</h3>
+  <ul>
+    {{#each item in model}}
+      <li><a {{action selectSlideAction item}}>{{item.name}}</a> <a {{action deleteSlideAction item}}>X</a> </li>
+    {{/each}}
+  </ul>
+</div>
 
 
-<div>Slide list
-<ul>
+<div id="impress">
   {{#each item in model}}
     {{render slide item}} 
   {{/each}}
-</ul>
 </div>
