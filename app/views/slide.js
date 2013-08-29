@@ -20,6 +20,7 @@ var SlideView = Ember.View.extend({
     console.log(e);
     // enter dragging only if we are selected
     if (this.get('controller.isSelected')) {
+      console.log('enter dragging');
       this.set('isDragging', true);
       this.set('dragOrigin', {
         x: e.offsetX,

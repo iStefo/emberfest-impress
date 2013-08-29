@@ -12,8 +12,10 @@ var PinPinComponent = Ember.Component.extend({
   },
   mouseMoveHandler: function (ev) {
     var newDist = this._calculateDistance(ev);
+    console.log(newDist);
     console.log((newDist / this.get('initDist')).toFixed(2));
-    this.set('scale', (newDist / this.get('initDist')).toFixed(2));
+    var newScale = parseFloat((newDist / this.get('initDist')).toFixed(2));
+    this.get('parentView.controller').set('scale', newScale);
 
   },
   releaseMouse: function () {
