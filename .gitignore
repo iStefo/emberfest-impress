@@ -6,7 +6,6 @@
 
 # dependencies
 /node_modules
-/vendor
 !/vendor/loader.js
 
 # misc
