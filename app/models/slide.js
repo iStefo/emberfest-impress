@@ -1,6 +1,10 @@
 var Slide = Ember.Object.extend({
   name: 'new slide',
-  isSelected:false
+  x: 0,
+  y: 0,
+  scale: 1,
+  rotate: 0,
+  isSelected: false
 });
 
 export default Slide;
