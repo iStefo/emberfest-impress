@@ -4,33 +4,44 @@ var PinPinComponent = Ember.Component.extend({
     ev.stopImmediatePropagation();
     if (!this.get('rotation'))  {
       console.log('make scaling');
-      $('body').on('mousemove', this.mouseMoveHandler.bind(this));
-      $('body').on('mouseup', this.releaseMouse.bind(this));
+      $('body').on('mousemove', this._mMH = $.proxy(this.mouseMoveHandler, this));
+      $('body').on('mouseup', this._mUH = $.proxy(this.releaseMouse, this));
 
-      this.set('initDist', this._calculateDistance(ev));
+      var centerPoint = this._calculateParentCenter();
+      var ownPoint = { x: ev.clientX, y: ev.clientY };
+      var pointDistance = this._calculateDistance(centerPoint, ownPoint);
+      console.log(pointDistance);
+      this.set('initDist', pointDistance);
     }
   },
+
   mouseMoveHandler: function (ev) {
-    var newDist = this._calculateDistance(ev);
-    console.log(newDist);
-    console.log((newDist / this.get('initDist')).toFixed(2));
-    var newScale = parseFloat((newDist / this.get('initDist')).toFixed(2));
+    var centerPoint = this._calculateParentCenter();
+    var ownPoint = { x: ev.clientX, y: ev.clientY };
+    var dist = this._calculateDistance(centerPoint, ownPoint);
+    var newScale = dist / this.get('initDist');
     this.get('parentView.controller').set('scale', newScale);
 
   },
   releaseMouse: function () {
     console.log('release mouse now');
-    $('body').off('mousemove');
-    $('body').off('mouseup');
+    $('body').off('mousemove', this._mMH);
+    $('body').off('mouseup',  this._mUH);
   },
-  _calculateDistance: function (ev) {
+
+  _calculateParentCenter: function() {
     var parentView = this.get('parentView').$()[0],
-      centerX = parentView.offsetLeft + (parentView.offsetWidth / 2),
-      centerY = parentView.offsetTop + (parentView.offsetHeight / 2),
-      initX = ev.clientX,
-      initY = ev.clientY,
-      dist = Math.sqrt(Math.pow(initX - centerX, 2) + Math.pow(initY - centerY, 2));
-    return dist;
+      parentScale = this.get('parentView.controller.scale'),
+      centerX = (parentView.getBoundingClientRect().left + (parentView.offsetWidth / 2) * parentScale),
+      centerY = (parentView.getBoundingClientRect().top + (parentView.offsetHeight / 2) * parentScale );
+    return {
+      x: centerX,
+      y: centerY
+    };
+  }, 
+
+  _calculateDistance: function (point1, point2) {
+    return Math.sqrt(Math.pow(point1.x - point2.x, 2) + Math.pow(point1.y - point2.y, 2));
   }
 
 });

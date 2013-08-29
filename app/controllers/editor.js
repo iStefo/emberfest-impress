@@ -6,6 +6,9 @@ var EditorController = Ember.ArrayController.extend({
   //action to add a Slide
   addSlideAction : function(){
     this.pushObject(Slide.create());
+    Ember.run.next(this, function() {
+      this.playSlideshow();
+    });
   },
   //action to select the slide
   selectSlideAction:function(slide){

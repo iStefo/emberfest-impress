@@ -32,6 +32,7 @@ var SlideView = Ember.View.extend({
   },
 
   mouseMove: function(e)  {
+    console.log('mousemove');
     if (this.get('isDragging')) {
       var dX =  e.offsetX - this.get('dragOrigin.x');
       var dY = e.offsetY - this.get('dragOrigin.y');

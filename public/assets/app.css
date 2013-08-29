@@ -6,6 +6,11 @@ body {
   box-sizing: border-box;
 }
 
+#impress {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
 .editor-slide {
   position: relative;
   border: 1px solid navy;
@@ -21,6 +26,7 @@ body {
   border: 1px solid navy;
   border-radius: 6px;
   background: cornflowerblue;
+  cursor: pointer;
 }
 
 .editor-slide .line {
