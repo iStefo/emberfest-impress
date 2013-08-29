@@ -8,6 +8,11 @@ var App = Ember.Application.create({
 });
 
 import routes from 'emberfest-impress/routes';
+
+App.Router.reopen({
+  location: 'history'
+});
+
 App.Router.map(routes); // TODO: just resolve the router
 
 export default App;
