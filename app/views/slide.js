@@ -1,5 +1,5 @@
 var SlideView = Ember.View.extend({
-  classNames: ['slides']
+  classNames: ['editor-slide', 'step']
 });
 
 export default SlideView;

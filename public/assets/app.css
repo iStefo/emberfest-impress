@@ -1,0 +1,38 @@
+body {
+  margin: 50px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.editor-slide {
+  position: relative;
+  border: 1px solid navy;
+  margin: 50px 0;
+}
+
+.editor-slide .handler {
+  position: absolute;
+  height: 12px;
+  width: 12px;
+  border: 1px solid navy;
+  border-radius: 6px;
+  background: cornflowerblue;
+}
+
+.editor-slide .handler.left {
+  left: -6px;
+}
+
+.editor-slide .handler.top {
+  top: -6px;
+}
+
+.editor-slide .handler.right {
+  right: -6px;
+}
+
+.editor-slide .handler.bottom {
+  bottom: -6px;
+}
