@@ -4,7 +4,17 @@
   <h3>Control Panel</h3>
   <ul>
     {{#each item in model}}
-      <li {{bindAttr class="item.isSelected:selected"}}><a {{action selectSlideAction item}}>{{item.name}}</a> <a {{action deleteSlideAction item}}>X</a> </li>
+      <li {{bindAttr class="item.isSelected:selected"}}>
+      	<a {{action selectSlideAction item}}>{{item.name}}</a>
+      	{{#if item.isSelected}}
+      		{{#if item.isEditing}}
+      			<a {{action editSlideAction item}}>Save slide</a>
+      		{{else}}
+				<a {{action editSlideAction item}}>Edit</a>
+      		{{/if}}
+      		<a {{action deleteSlideAction item}}>X</a>
+      	{{/if}}
+      </li>
     {{/each}}
   </ul>
 </div>
