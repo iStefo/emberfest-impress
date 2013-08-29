@@ -11,3 +11,15 @@ import routes from 'emberfest-impress/routes';
 App.Router.map(routes); // TODO: just resolve the router
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
