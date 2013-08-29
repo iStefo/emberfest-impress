@@ -8,7 +8,9 @@ var SlideView = Ember.View.extend({
   dataScale: Ember.computed.alias('controller.scale'),
 
   click: function () {
-    this.get('controller').toggleSelected();
+    if (!this.get('controller.content.isEditing')){
+      this.get('controller').toggleSelected();
+    }
   }
 });
 

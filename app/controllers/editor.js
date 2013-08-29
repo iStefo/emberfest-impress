@@ -19,6 +19,12 @@ var EditorController = Ember.ArrayController.extend({
   deleteSlideAction : function(slide){
     this.removeObject(slide);
     slide.destroy();
+  },
+  editSlideAction:function(slide){
+    var wasEditing = slide.get('isEditing');
+    //
+    this.get('content').setEach('isEditing',false);
+    slide.set('isEditing',!wasEditing);
   }
 });
 

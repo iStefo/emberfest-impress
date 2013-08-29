@@ -47,5 +47,6 @@ body {
 }
 
 .selected{
-    background:blue;
+  background:cornflowerblue;
+  border: 1px solid navy;
 }
