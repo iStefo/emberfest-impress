@@ -1,10 +1,17 @@
-
-
 <div id="control-panel" class="pure-u-1-3">
 	<div class="pure-menu pure-menu-open">
     <h3 class="pure-menu-heading">Control Panel</h3>
 
-    <button class="pure-button pure-button-primary" {{action addSlideAction}}>add slide</button>
+    
+        <span class="icon-stack" {{action addSlideAction}}>
+          <i class="icon-circle icon-stack-base"></i>
+          <i class="icon-plus icon-light"></i>
+        </span>
+        <span class="icon-stack" {{action playSlideshow}}>
+          <i class="icon-circle icon-stack-base"></i>
+          <i class="icon-play icon-light"></i>
+        </span>
+    
     <ul>
       {{#each item in model}}
         <li {{bindAttr class="item.isSelected:selected :menu-hover"}}>

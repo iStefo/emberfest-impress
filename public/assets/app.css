@@ -47,6 +47,8 @@ body {
 }
 
 .selected{
-  background:cornflowerblue;
   border: 1px solid navy;
+}
+.menu-hover:hover{
+  background: #E6E6E6;
 }

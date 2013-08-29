@@ -25,6 +25,12 @@ var EditorController = Ember.ArrayController.extend({
     //
     this.get('content').setEach('isEditing',false);
     slide.set('isEditing',!wasEditing);
+  },
+
+  playSlideshow: function() {
+    $('#impress').jmpress({
+      mouse: { clickSelects: false }
+    });
   }
 });
 
